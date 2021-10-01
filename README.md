@@ -27,32 +27,14 @@
 
 ### Как установить программу?
 
-Поочередно вводи в терминал вот эти команды....
-Удачи тебе кулхацкер, Вселенная верит в ТЕБЯ!
-```
-```
+Поочередно вводи в терминал вот эти команды и нажимай Enter.
 $ apt-get update -y
-```
-```
 $ apt-get upgrade -y
-```
-```
 $ pkg install git -y
-```
-```
 $ git clone https://github.com/OxideDevX/instabruter_2.0.0
-
-```
-```
 $ ls
-```
-```
 $ cd instabruter_2.0.0
-```
-```
 $ ls
-```
-```
 $ pkg install nano
 ```
 ```
