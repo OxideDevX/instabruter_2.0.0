@@ -1,49 +1,44 @@
 # Instabruter
 
 ## О программе :
-
 Данная поделка, это самый обычный python скрипт. 
 С его помощью ты сможешь вскрыть Instagram аккаунты своих друзей.
-
 АВТОР НЕ НЕСЕТ ОТВЕСТВЕННОСТЬ ЗА ДЕЙСТВИЯ ЗА ЛЮБЫЕ НЕГАТИВНЫЕ ДЕЙСТВИЯ КОТОРЫЕ ВЫ МОЖЕТЕ НАНЕСТИ ЛЮДЯМ А ТАКЖЕ КОМПЬЮТЕРНЫМ СИСТЕМАМ ИСПОЛЬЗУЯ ДАННУЮ ПРОГРАММУ!
 ЗА ВСЕ СВОИ ДЕЙСТВИЯ ОТВЕЧАЕТЕ СТРОГО ВЫ!
 ПРОШУ ИСПОЛЬЗОВАТЬ ПРОГРАММУ СТРОГО В УЧЕБНЫХ ЦЕЛЯХ И НЕ ПРИМЕНЯТЬ ЕЕ ДЛЯ СОВЕРШЕНИЯ ПРОТИВОПРАВНЫХ ВЕЩЕЙ!!!
+ПРОДУКТ ПРЕДНАЗНАЧЕН ДЛЯ ИСПОЛЬЗОВАНИЯ В СРЕДЕ СПЕЦИАЛИСТОВ ПО ИНФОРМАЦИОННОЙ БЕЗОПАСНОСТИ, ИССЛЕДОВАТЕЛЕЙ ИНФОРМАЦИОННОЙ БЕЗОПАСНОСТИ А ТАКЖЕ ФОРЕНЗИКАМИ.
 
 ### Программа поддерживает: 
 
-• Termux(эмултор терминала на Android , подробней вот здесь: https://termux.com/ , я не Википедия!)
+• Termux(эмултор терминала на Android , подробней читаем вот здесь: https://termux.com/ !)
 
 • Kali-Linux
 
-• Ubuntu 
-
 • Debian
 
-• Parrot
-
-• Tails 
-
-• и другие Linux дистрибутивы)).
+• и другие Linux дистрибутивы
 
 ### Как установить программу?
 
 Поочередно вводи в терминал вот эти команды и нажимай Enter.
 $ apt-get update -y
-$ apt-get upgrade -y
-$ pkg install git -y
-$ git clone https://github.com/OxideDevX/instabruter_2.0.0
-$ ls
-$ cd instabruter_2.0.0
-$ ls
-$ pkg install nano
-```
-```
-$ Now Enter Some password 
-```
-```
-$ CTRL + X
-```
-```
-$ python2 hackinsta.py
 
-ПИЛИТЕ ШУРА! ОНА ЗОЛОТАЯ!
+$ apt-get upgrade -y
+
+$ pkg install git -y
+
+$ git clone https://github.com/OxideDevX/instabruter_2.0.0
+
+$ ls
+
+$ cd instabruter_2.0.0
+
+$ ls
+
+$ pkg install nano
+
+$ Now Enter Some password 
+
+$ CTRL + X
+
+$ python2 hackinsta.py
